@@ -4,8 +4,11 @@ services:
     image: suayb/spring-boot-jhipster-filtering-example:latest
     container_name: spring-boot-jhipster-filtering-example
     restart: ${RESTART_POLICY}
+    networks:
+      - back-tier
     depends_on:
       - postgresql
+      - redis
     environment:
       - TZ
       - _JAVA_OPTIONS
@@ -13,6 +16,9 @@ services:
       - SPRING_DATASOURCE_URL
       - SPRING_DATASOURCE_USERNAME
       - SPRING_DATASOURCE_PASSWORD
+      - JHIPSTER_CACHE_REDIS_SERVER
+      - JHIPSTER_CACHE_REDIS_CLUSTER
+      - JHIPSTER_CACHE_REDIS_EXPIRATION
     ports:
       - 9090:9090
 
@@ -20,6 +26,8 @@ services:
     image: bitnami/postgresql:13
     container_name: postgresql
     restart: ${RESTART_POLICY}
+    networks:
+      - back-tier
     environment:
       - TZ
       - POSTGRESQL_LOG_TIMEZONE
@@ -32,7 +40,29 @@ services:
     ports:
       - 5432:5432
 
+  redis:
+    image: bitnami/redis:6.2
+    container_name: redis
+    restart: ${RESTART_POLICY}
+    networks:
+      - back-tier
+    environment:
+      - TZ
+      - REDIS_PASSWORD
+    volumes:
+      - redis_data:/bitnami/redis/data
+    ports:
+      - 6379:6379
+
+networks:
+  back-tier:
+    driver: bridge
+    name: back-tier
+
 volumes:
   postgresql_data:
     driver: local
     name: postgresql_data
+  redis_data:
+    driver: local
+    name: redis_data

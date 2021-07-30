@@ -30,9 +30,12 @@ docker-compose up -d
 * Spring Boot Starter Web
 * Spring Boot Starter Actuator
 * Spring Boot Starter Jpa
+* Spring Boot Starter Cache
 * Spring Boot Starter Test
 * Liquibase Core
 * Hibernate Jpamodelgen
+* Hibernate Jcache
+* Redisson
 * Lombok
 * Mapstruct
 * Mapstruct Processor
@@ -64,6 +67,7 @@ docker-compose up -d
 * Audit
 * Filtering
 * Pagination
+* Caching
 
 ## Swagger Support
 

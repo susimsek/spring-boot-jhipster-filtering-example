@@ -3,6 +3,8 @@ package io.susimsek.filteringexample.domain;
 import io.susimsek.filteringexample.domain.audit.AbstractDateAuditingEntity;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,6 +12,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "product")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
 @NoArgsConstructor
