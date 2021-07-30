@@ -21,6 +21,10 @@ docker-compose up -d
 
 ## Used Technologies
 
+Spring Boot
+Postgresql
+Redis
+
 ### Shared Libraries
 
 * Java 11 
