@@ -61,6 +61,7 @@ docker-compose up -d
 ### Features
 
 * Swagger
+* Audit
 * Filtering
 * Pagination
 
