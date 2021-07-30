@@ -11,7 +11,7 @@
 
         <!-- Rolling File Appender -->
         <RollingFile name="FileAppender" fileName="logs/app.log"
-                     filePattern="logs/name=spring-boot-jhipster-filtering-example.log-%d{yyyy-MM-dd}-%i.log">
+                     filePattern="logs/app-%d{yyyy-MM-dd}-%i.log">
             <PatternLayout>
                 <Pattern>${LOG_PATTERN}</Pattern>
             </PatternLayout>
