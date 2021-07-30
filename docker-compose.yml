@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  spring-boot-jhipster-filtering-example:
+    image: suayb/spring-boot-jhipster-filtering-example:latest
+    container_name: spring-boot-jhipster-filtering-example
+    restart: ${RESTART_POLICY}
+    depends_on:
+      - postgresql
+    environment:
+      - TZ
+      - _JAVA_OPTIONS
+      - SPRING_PROFILES_ACTIVE
+      - SPRING_DATASOURCE_URL
+      - SPRING_DATASOURCE_USERNAME
+      - SPRING_DATASOURCE_PASSWORD
+    ports:
+      - 9090:9090
+
+  postgresql:
+    image: bitnami/postgresql:13
+    container_name: postgresql
+    restart: ${RESTART_POLICY}
+    environment:
+      - TZ
+      - POSTGRESQL_LOG_TIMEZONE
+      - POSTGRESQL_USERNAME
+      - POSTGRESQL_PASSWORD
+      - POSTGRESQL_DATABASE
+      - POSTGRESQL_POSTGRES_PASSWORD
+    volumes:
+      - postgresql_data:/bitnami/postgresql
+    ports:
+      - 5432:5432
+
+volumes:
+  postgresql_data:
+    driver: local
+    name: postgresql_data
