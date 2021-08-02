@@ -10,7 +10,7 @@
 ## Build Docker Image
 
 ```sh
-./mvnw -Pprod verify jib:dockerBuild
+./mvnw -Pprod compile jib:dockerBuild
 ```
 
 ## Installation
